@@ -2,7 +2,7 @@
 
 namespace GerenciadorDeLivros.Controllers
 {
-    public class Livro : Controller
+    public class LivroController : Controller
     {
         public IActionResult Index()
         {
