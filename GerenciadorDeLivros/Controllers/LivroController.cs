@@ -12,5 +12,9 @@ namespace GerenciadorDeLivros.Controllers
         {
             return View();
         }
+        public IActionResult Editar()
+        {
+            return View();
+        }
     }
 }
