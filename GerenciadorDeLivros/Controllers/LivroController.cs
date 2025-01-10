@@ -16,5 +16,9 @@ namespace GerenciadorDeLivros.Controllers
         {
             return View();
         }
+        public IActionResult ExcluirConfirmacao()
+        {
+            return View();
+        }
     }
 }
