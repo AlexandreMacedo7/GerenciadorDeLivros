@@ -53,5 +53,29 @@ namespace GerenciadorDeLivros.Daos
             }
             return livros;
         }
+
+        public LivroModel GetById(int id)
+        {
+            using (var connection = new MySqlConnection(_conectionString))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand("SELECT * FROM Livros WHERE Id = @Id;", connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return new LivroModel
+                        {
+                            Id = reader.GetInt32("Id"),
+                            Titulo = reader.GetString("Titulo"),
+                            Autor = reader.GetString("Autor"),
+                            Editora = reader.GetString("Editora")
+                        };
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
