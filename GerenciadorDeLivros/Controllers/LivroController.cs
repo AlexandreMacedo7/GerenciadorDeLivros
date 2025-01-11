@@ -17,7 +17,8 @@ namespace GerenciadorDeLivros.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<LivroModel> livros = _livroDao.getAll();
+            return View(livros);
         }
         public IActionResult Criar()
         {

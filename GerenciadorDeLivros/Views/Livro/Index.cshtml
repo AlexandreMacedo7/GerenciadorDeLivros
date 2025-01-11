@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<LivroModel>
+@{
     ViewData["Title"] = "Listagem de livros";
 }
 <div class="text-center">
@@ -18,42 +19,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a rule="button" class="btn btn-primary" asp-controller="Livro" asp-action="Editar">Editar</a>
-                        <a rule="button" class="btn btn-danger" sp-controller="Livro" asp-action="ExcluirConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Jame</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a rule="button" class="btn btn-primary" asp-controller="Livro" asp-action="Editar">Editar</a>
-                        <a rule="button" class="btn btn-danger" sp-controller="Livro" asp-action="ExcluirConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>twitter</td>
-                <td>storie</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a rule="button" class="btn btn-primary" asp-controller="Livro" asp-action="Editar">Editar</a>
-                        <a rule="button" class="btn btn-danger" sp-controller="Livro" asp-action="ExcluirConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (LivroModel livro in Model)
+                {
+                    <tr>
+                        <th scope="row">@livro.Id</th>
+                        <td>@livro.Titulo</td>
+                        <td>@livro.Autor</td>
+                        <td>@livro.Editora</td>
+                        <td>
+                            <a class="btn btn-primary" rule="button" asp-controller="Livro" asp-action="Editar" asp-route-id="@livro.Id">Editar</a>
+                            <a class="btn btn-danger" rule="button" asp-controller="Livro" asp-action="Excluir" asp-route-id="@livro.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
