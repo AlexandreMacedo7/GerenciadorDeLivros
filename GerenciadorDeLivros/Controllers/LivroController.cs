@@ -29,9 +29,10 @@ namespace GerenciadorDeLivros.Controllers
             LivroModel livro = _livroDao.GetById(id);
             return View(livro);
         }
-        public IActionResult ExcluirConfirmacao()
+        public IActionResult ExcluirConfirmacao(int id)
         {
-            return View();
+            LivroModel livro = _livroDao.GetById(id);
+            return View(livro);
         }
 
         [HttpPost]
@@ -45,6 +46,11 @@ namespace GerenciadorDeLivros.Controllers
         public IActionResult EditarLivro(LivroModel livro)
         {
             _livroDao.UpdateLivro(livro);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ExcluirLivro(int id) {
+            _livroDao.DeleteLivro(id);
             return RedirectToAction("Index");
         }
     }

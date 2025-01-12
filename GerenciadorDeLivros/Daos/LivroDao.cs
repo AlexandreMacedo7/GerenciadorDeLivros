@@ -95,5 +95,22 @@ namespace GerenciadorDeLivros.Daos
             }
             return livroAtualizado;
         }
+
+        public void DeleteLivro(int id)
+        {
+            using (var connection = new MySqlConnection(_conectionString))
+            {
+                connection.Open();
+
+                using (var command = new MySqlCommand("DELETE FROM Livros WHERE Id = @Id", connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
+

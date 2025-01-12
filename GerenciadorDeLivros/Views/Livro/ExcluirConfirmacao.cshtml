@@ -1,9 +1,12 @@
-﻿@{
+﻿@model LivroModel
+@{
     ViewData["Title"] = "Confirmação de Exclusão";
 }
 
 <div class="text-center">
-    <h3>Deseja Confirmar a Exclusão do livro?</h3>
-        <a class="btn btn-primary" rule="button" asp-controller="Livro" asp-action="Index">Cancelar</a>
-        <a class="btn btn-danger" rule="button" asp-controller="Livro" asp-action="Excluir">Excluir</a>
+    <h3>Deseja Confirmar a Exclusão do livro @Model.Titulo?</h3>
+    <a class="btn btn-primary" rule="button" asp-controller="Livro" asp-action="Index">Cancelar</a>
+    <a class="btn btn-danger" rule="button" asp-route-id="@Model.Id" asp-controller="Livro" asp-action="ExcluirLivro">Excluir</a>
 </div>
+
+

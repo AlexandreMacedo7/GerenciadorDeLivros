@@ -30,7 +30,7 @@
                         <td>@livro.Editora</td>
                         <td>
                             <a class="btn btn-primary" rule="button" asp-controller="Livro" asp-action="Editar" asp-route-id="@livro.Id">Editar</a>
-                            <a class="btn btn-danger" rule="button" asp-controller="Livro" asp-action="Excluir" asp-route-id="@livro.Id">Excluir</a>
+                            <a class="btn btn-danger" rule="button" asp-controller="Livro" asp-action="ExcluirConfirmacao" asp-route-id="@livro.Id">Excluir</a>
                         </td>
                     </tr>
                 }
