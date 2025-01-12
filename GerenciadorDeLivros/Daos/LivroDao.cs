@@ -53,7 +53,7 @@ namespace GerenciadorDeLivros.Daos
             }
             return livros;
         }
-
+        //TODO: Criar exceção personalizada para o caso de não encontrar o livro
         public LivroModel GetById(int id)
         {
             using (var connection = new MySqlConnection(_conectionString))
@@ -76,6 +76,24 @@ namespace GerenciadorDeLivros.Daos
                 }
             }
             return null;
+        }
+
+        public LivroModel UpdateLivro(LivroModel livroAtualizado)
+        {
+            using (var connection = new MySqlConnection(_conectionString))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand("UPDATE Livros SET Titulo = @Titulo, Autor = @Autor, Editora = @Editora WHERE Id = @Id;", connection))
+                {
+                    command.Parameters.AddWithValue("@Titulo", livroAtualizado.Titulo);
+                    command.Parameters.AddWithValue("@Autor", livroAtualizado.Autor);
+                    command.Parameters.AddWithValue("@Editora", livroAtualizado.Editora);
+                    command.Parameters.AddWithValue("@Id", livroAtualizado.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            return livroAtualizado;
         }
     }
 }
