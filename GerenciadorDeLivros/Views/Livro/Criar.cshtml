@@ -10,14 +10,17 @@
     <div class="mb-3">
         <label for="titulo">Título</label>
         <input type="text" asp-for="Titulo" class="form-control" placeholder="Digite o Título do livro">
+        @Html.ValidationMessageFor(model => model.Titulo)
     </div>
     <div class="mb-3">
         <label for="autor">Autor</label>
         <input type="text" asp-for="Autor" class="form-control" placeholder="Digite o nome do autor do livro">
+        @Html.ValidationMessageFor(model => model.Autor)
     </div>
     <div class="mb-3">
         <label for="editora">Editora</label>
         <input type="text" asp-for="Editora" class="form-control" placeholder="Digite a Editora do livro">
+        @Html.ValidationMessageFor(model => model.Editora)
     </div>
   
     <button type="submit" class="btn btn-primary">Adicionar</button>

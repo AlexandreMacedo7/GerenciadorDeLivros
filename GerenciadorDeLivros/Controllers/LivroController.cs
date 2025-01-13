@@ -38,8 +38,12 @@ namespace GerenciadorDeLivros.Controllers
         [HttpPost]
         public IActionResult CriarLivro(LivroModel livro)
         {
-            _livroDao.Create(livro);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _livroDao.Create(livro);
+                return RedirectToAction("Index");
+            }
+            return View("Criar",livro);
         }
 
         [HttpPost]
