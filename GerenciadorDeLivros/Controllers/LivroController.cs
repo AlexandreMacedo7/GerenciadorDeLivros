@@ -76,8 +76,29 @@ namespace GerenciadorDeLivros.Controllers
         }
 
         public IActionResult ExcluirLivro(int id) {
-            _livroDao.DeleteLivro(id);
-            return RedirectToAction("Index");
+
+            try
+            {
+                var livro = _livroDao.GetById(id);
+
+                if (livro != null)
+                {
+                    TempData["MensagemSucesso"] = "Livro excluído!";
+                    _livroDao.DeleteLivro(id);
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Não foi possível excluir o livro: ";
+                }
+
+
+                return RedirectToAction("Index");
+            }
+            catch (SystemException erro) 
+            {
+                TempData["MensagemErro"] = "Erro ao excluir o livro: "+ erro.Message;
+                return RedirectToAction("Index");
+            }
         }
     }
 }
