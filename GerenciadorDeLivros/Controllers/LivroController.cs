@@ -49,8 +49,12 @@ namespace GerenciadorDeLivros.Controllers
         [HttpPost]
         public IActionResult EditarLivro(LivroModel livro)
         {
-            _livroDao.UpdateLivro(livro);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _livroDao.UpdateLivro(livro);
+                return RedirectToAction("Index");
+            }
+            return View("Editar",livro);
         }
 
         public IActionResult ExcluirLivro(int id) {
