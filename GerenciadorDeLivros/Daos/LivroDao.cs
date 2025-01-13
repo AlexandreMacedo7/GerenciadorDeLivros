@@ -53,7 +53,7 @@ namespace GerenciadorDeLivros.Daos
             }
             return livros;
         }
-        //TODO: Criar exceção personalizada para o caso de não encontrar o livro
+        
         public LivroModel GetById(int id)
         {
             using (var connection = new MySqlConnection(_conectionString))
@@ -73,9 +73,12 @@ namespace GerenciadorDeLivros.Daos
                             Editora = reader.GetString("Editora")
                         };
                     }
+                    else
+                    {
+                        throw new KeyNotFoundException($"Livro com Id = {id} não encontrado.");
+                    }
                 }
             }
-            return null;
         }
 
         public LivroModel UpdateLivro(LivroModel livroAtualizado)
