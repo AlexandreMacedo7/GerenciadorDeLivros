@@ -38,12 +38,21 @@ namespace GerenciadorDeLivros.Controllers
         [HttpPost]
         public IActionResult CriarLivro(LivroModel livro)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _livroDao.Create(livro);
+                if (ModelState.IsValid)
+                {
+                    _livroDao.Create(livro);
+                    TempData["MensagemSucesso"] = "Livro cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View("Criar", livro);
+            }
+            catch(SystemException erro)
+            {
+                TempData["MensagemErro"] = "Erro ao cadastrar o livro: " + erro.Message;
                 return RedirectToAction("Index");
             }
-            return View("Criar",livro);
         }
 
         [HttpPost]

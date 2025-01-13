@@ -7,6 +7,25 @@
         <a class="btn btn-primary" rule="button" asp-controller="Livro" asp-action="Criar">Adicionar novo Livro</a>
     </div> 
     <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["MensagemSucesso"]
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["MensagemErro"]
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        </div>
+    }
+
+    <br/>
+
     <h1 class="display-4">Listagem de livros</h1>
     <table class="table">
         <thead>
