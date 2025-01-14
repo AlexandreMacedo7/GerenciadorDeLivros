@@ -30,7 +30,8 @@ git clone https://github.com/AlexandreMacedo7/GerenciadorDeLivros.git cd gerenci
 ### 2. Configurar a String de Conexão
 
 Atualize a string de conexão no arquivo `appsettings.json` com as credenciais do seu banco de dados MySQL:
-{ "ConnectionStrings": { "DefaultConnection": "Server=localhost;Database=Biblioteca;User=****;Password=****;" } }
+
+{"ConnectionStrings": { "DefaultConnection": "Server=localhost;Database=Biblioteca;User=****;Password=****;" } }
 
 ### 3. Configurar o Banco de Dados
 
