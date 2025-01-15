@@ -2,6 +2,8 @@
 
 Este é um projeto de gerenciamento de livros para aprofundamento de conhecimento no ambiente CSharp, desenvolvido com Blazor, ASP.NET Core e MySQL. O sistema permite cadastrar, editar, listar e excluir livros.
 
+Você pode visualizar a aplicação em funcionamento [aqui](http://3.147.68.100:5000/).
+
 ## Tecnologias Utilizadas
 
 - **C#**
@@ -31,19 +33,26 @@ git clone https://github.com/AlexandreMacedo7/GerenciadorDeLivros.git cd gerenci
 
 Atualize a string de conexão no arquivo `appsettings.json` com as credenciais do seu banco de dados MySQL:
 
-{"ConnectionStrings": { "DefaultConnection": "Server=localhost;Database=Biblioteca;User=****;Password=****;" } }
+`{"ConnectionStrings": { "DefaultConnection": "Server=localhost;Database=Biblioteca;User=****;Password=****;" } }`
 
 ### 3. Configurar o Banco de Dados
 
 Crie o banco de dados e a tabela necessária:
 
-CREATE DATABASE Biblioteca; USE Biblioteca;
-CREATE TABLE Livros ( Id INT AUTO_INCREMENT PRIMARY KEY, Titulo VARCHAR(255) NOT NULL, Autor VARCHAR(255) NOT NULL, Editora VARCHAR(255) NOT NULL );
+`CREATE DATABASE Biblioteca; USE Biblioteca;
+CREATE TABLE Livros ( Id INT AUTO_INCREMENT PRIMARY KEY, Titulo VARCHAR(255) NOT NULL, Autor VARCHAR(255) NOT NULL, Editora VARCHAR(255) NOT NULL );`
+
+-- Populando com alguns dados exemplo
+
+`INSERT INTO Livros (Titulo, Autor, Editora) VALUES
+('O Alquimista', 'Paulo Coelho', 'HarperOne'),
+('1984', 'George Orwell', 'Secker & Warburg');`
 
 ### 4. Executar o Projeto
 
 No diretório do projeto, execute o comando:
-dotnet run
+
+`dotnet run`
 
 O projeto estará disponível em `http://localhost:5042` ou `http://localhost:13966` se estiver usando IIS Express.
 
